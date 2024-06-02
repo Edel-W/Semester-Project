@@ -16,6 +16,7 @@ public:
     Customer(int id, string name, string address, string phoneNum)
         : customerID(id), name(name), address(address), phoneNumber(phoneNum) {}
 
+    // Method to register a customer
     void registerCust() {
         cout << "--------------------CUSTOMER REGISTRATION----------------------" << endl;
         cout << "Enter customer ID: ";
@@ -31,6 +32,8 @@ public:
         cout << "---------------------------------------------------------------------------------" << endl;
     }
 
+     
+    // Method to display customer information
     void displayCust() {
         cout << "--------------------CUSTOMER INFO----------------------" << endl;
         cout << "Customer Id: " << customerID << endl;
@@ -53,6 +56,7 @@ public:
     Rental(int rId, string rDate, string retDate, int cID)
         : rentalID(rId), rentalDate(rDate), returnDate(retDate), customerID(cID) {}
 
+      // Method to display rental information
     void displayRental() {
         cout << "--------------------RENTAL INFO----------------------" << endl;
         cout << "Rental ID: " << rentalID << endl;
@@ -76,6 +80,7 @@ public:
     Movie(int id, string title, string genre, string relDate, bool available = true)
         : movieID(id), title(title), genre(genre), releaseDate(relDate), isAvailable(available) {}
 
+     // Method to display a list of movies
     static void displayMovies(const Movie movies[], int movieCount) {
         cout << "--------------------MOVIE LIST----------------------" << endl;
         for (int i = 0; i < movieCount; ++i) {
@@ -92,6 +97,7 @@ public:
         cout << "---------------------------------------------------------------------------------" << endl;
     }
 
+     // Method to update the status of a movie
     void updateStatus() {
         if (isAvailable) {
             cout << "Movie: " << title << " is Available" << endl;
@@ -114,6 +120,7 @@ public:
     Payment(int id, float amount, string pDate, string method)
         : paymentID(id), amount(amount), paymentDate(pDate), method(method) {}
 
+     // Method to display payment information
     void displayP() {
         cout << "--------------------PAYMENT INFO----------------------" << endl;
         cout << "Enter payment ID: ";
@@ -128,6 +135,7 @@ public:
         cout << "---------------------------------------------------------------------------------" << endl;
     }
 
+    // method to process payment
     void processPayment() {
         cout << "Processed payment of amount " << amount << " on " << paymentDate << " via " << method << endl;
         cout << "---------------------------------------------------------------------------------" << endl;
@@ -146,6 +154,7 @@ public:
     Staff(int id, string name, string role, string cInfo)
         : staffID(id), name(name), role(role), contactInfo(cInfo) {}
 
+    //Method to display staff information
     void displayS() {
         cout << "--------------------STAFF INFO----------------------" << endl;
         cout << "Staff ID: " << staffID << endl;
@@ -158,10 +167,12 @@ public:
 
 
 int main() {
+    //Register a customer
     Customer cust1;
     cust1.registerCust();
     cust1.displayCust();
 
+    //Created an array of Movie Objects
     const int movieCount = 5;
     Movie movieList[movieCount] = {
         {1, "The Shawshank Redemption", "Drama", "1994-09-23", true},
@@ -171,8 +182,10 @@ int main() {
         {5, "Forrest Gump", "Drama", "1994-07-06", true}
     };
 
+    //Display the list of Movies
     Movie::displayMovies(movieList, movieCount);
 
+    //Allow the user to rent a movie
     int chosenMovieID;
     cout << "Enter the ID of the movie you want to rent: ";
     cin >> chosenMovieID;
